@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <body>
+        <section th:fragment="toastConsulta">
+
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+                <div id="consultaToast"
+                     class="toast"
+                     role="alert"
+                     aria-live="assertive"
+                     aria-atomic="true"
+                     data-bs-autohide="false">
+
+                    <div class="toast-header bg-info text-white">
+                        <i class="fa-solid fa-comment-dots me-2"></i>
+                        <strong class="me-auto">[[#{consulta.titulo}]]</strong>
+                        <button type="button" class="btn-close btn-close-white"
+                                data-bs-dismiss="toast"></button>
+                    </div>
+
+                    <div class="toast-body">
+                        <form th:action="@{/consulta/enviar}" method="post" class="was-validated">
+
+                            <div class="mb-2">
+                                <label class="form-label">[[#{consulta.nombre}]]</label>
+                                <input type="text"
+                                       name="nombre"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label">[[#{consulta.contacto}]]</label>
+                                <input type="text"
+                                       name="contacto"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label">[[#{consulta.mensaje}]]</label>
+                                <textarea name="mensaje"
+                                          class="form-control"
+                                          rows="3"
+                                          required></textarea>
+                            </div>
+
+                            <div class="d-grid mt-3">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    [[#{consulta.enviar}]]
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </body>
+</html>
